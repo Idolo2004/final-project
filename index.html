@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in port %}
+            <tr>
+                <td class="text-start">{{ s.symbol }}</td>
+                <td class="text-end">{{ s.total_shares }}</td>
+                <td class="text-end">{{ s.price | usd if s.price is not none else "N/A" }}</td>
+                <td class="text-end">{{ s.total_value | usd if s.total_value is not none else "N/A" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            {% for s in port %}
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+                <td class="border-0 text-end">{{ s.cash | usd if s.cash is not none else "N/A" }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="3">Total</td>
+                <td class="border-0 text-end">{{ s.grand_total | usd if s.grand_total is not none else "N/A" }}</td>
+            </tr>
+            {% endfor %}
+        </tfoot>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trnsactions History
+{% endblock %}
+
+{% block main %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Transaction Type</th>
+                <th class="text-end">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction["symbol"] }}</td>
+                <td>{{ transaction["shares"] }}</td>
+                <td>{{ transaction["price"] | usd if transaction["price"] is not none else "N/A" }}</td>
+                <td>{{ transaction["transaction_type"] }}</td>
+                <td>{{ transaction["timestamp"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

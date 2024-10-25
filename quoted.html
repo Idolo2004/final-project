@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+
+    <h5>A share of {{ stock["name"] }} ({{ symbol }}) costs {{ stock["price"] | usd if stock["price"] is not none else "N/A"}}</h5>
+
+{% endblock %}
