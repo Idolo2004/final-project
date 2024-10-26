@@ -42,7 +42,8 @@ def login():
         if not password:
             flash("Password missing")
 
-        rows = cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        rows = cursor.fetchall()
 
         if len(rows) != 1:
             flash("User not registered")
