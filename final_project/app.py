@@ -24,7 +24,7 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    return render_template("homepage.html")
+    return render_template("layout.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
