@@ -29,6 +29,8 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
 
     if request.method == "POST":
         if not request.form.get("username"):
@@ -36,3 +38,6 @@ def login():
 
         elif not request.form.get("password"):
             return apology("must provide password", 403)
+
+        rows = cursor.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        
