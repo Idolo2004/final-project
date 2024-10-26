@@ -41,19 +41,21 @@ def login():
 
         if not password:
             flash("Password missing")
+        try:
+            cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+            rows = cursor.fetchall()
+            print(f"Queried username: {username}, Rows returned: {len(rows)}")
 
-        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
-        rows = cursor.fetchall()
+            if len(rows) == 0:
+                flash("User not registered")
 
-        if len(rows) == 0:
-            flash("User not registered")
-            
+            user = rows[0]
+            if not check_password_hash(user["password"], password):
+                flash(f"Invalid password for user {username}")
 
-        user = rows[0]
-        if not check_password_hash(user["password"], password):
-            flash(f"Invalid password for user {username}")
-
-        session["user_id"] = user["id"]
-        return redirect("/")
+            session["user_id"] = user["id"]
+            return redirect("/")
+        except Exception as e:
+            print(f"An error Occured {e}")
     else:
         return render_template("login.html")
