@@ -47,10 +47,12 @@ def login():
 
         if len(rows) != 1:
             flash("User not registered")
-        elif not check_password_hash(rows[0]["password"], password):
+
+        user = rows[0]
+        if not check_password_hash(user["password"], password):
             flash(f"Invalid password for user {username}")
 
-        session["user_id"] = rows[0]["id"]
+        session["user_id"] = user["id"]
         return redirect("/")
     else:
         return render_template("login.html")
