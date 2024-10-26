@@ -151,24 +151,15 @@ h6 {
   z-index: 997;
 }
 
-.header .logo {
-  display: flex;
-  align-items: center;
-}
-
 .header .logo img {
-  max-height: 90px;
+  max-height: 32px;
   margin-right: 8px;
-  vertical-align: middle;
 }
 
 .header .logo h1 {
   font-size: 24px;
   margin: 0;
   font-weight: 700;
-  display: flex;
-  line-height: 90px;
-  align-items: center;
   color: var(--heading-color);
 }
 
