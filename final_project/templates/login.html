@@ -20,6 +20,13 @@
                 <form action="/login" method="post" class="php-email-form">
                     <h2 style="text-align: center;">Login</h2>
                     <div class="row gy-3">
+                        {% if get_flashed_messages(with_categories=true) %}
+                                <div>
+                                    {% for category, message in get_flashed_messages(with_categories=true) %}
+                                        <div class="{{ category }}-message">{{ message }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
 
                         <div class="col-12">
                             <input type="text" name="username" class="form-control" placeholder="Username" required="" autocomplete="off">
