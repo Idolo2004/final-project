@@ -57,5 +57,6 @@ def login():
             return redirect("/")
         except Exception as e:
             print(f"An error Occured {e}")
+            return f"{e}"
     else:
         return render_template("login.html")
