@@ -45,7 +45,7 @@ def login():
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         rows = cursor.fetchall()
 
-        if len(rows) != 1:
+        if len(rows) == 0:
             flash("User not registered")
 
         user = rows[0]
