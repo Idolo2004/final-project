@@ -13,7 +13,6 @@
   window.addEventListener('load', toggleScrolled);
 
 
-
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
