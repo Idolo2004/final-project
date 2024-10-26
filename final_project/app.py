@@ -37,20 +37,20 @@ def login():
 
     if request.method == "POST":
         if not username:
-            flash("Username missing")
+            return "Username missing"
 
         if not password:
-            flash("Password missing")
+            return "Password missing"
 
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         rows = cursor.fetchall()
 
         if IndexError:
-            flash("User not registered")
+            return "User not registered"
 
         user = rows[0]
         if not check_password_hash(user["password"], password):
-            flash(f"Invalid password for user {username}")
+            return f"Invalid password for user {username}"
 
         session["user_id"] = user["id"]
         return redirect("/")
