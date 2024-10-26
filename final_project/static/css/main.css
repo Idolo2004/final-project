@@ -151,6 +151,11 @@ h6 {
   z-index: 997;
 }
 
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
 .header .logo img {
   max-height: 90px;
   margin-right: 8px;
