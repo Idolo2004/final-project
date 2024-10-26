@@ -32,19 +32,22 @@ def login():
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
 
+    username = request.form.get("username")
+    password = request.form.get("password")
+
     if request.method == "POST":
-        if not request.form.get("username"):
+        if not username:
             flash("Username missing")
 
-        elif not request.form.get("password"):
+        if not password:
             flash("Password missing")
 
-        rows = cursor.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        rows = cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
 
         if len(rows) != 1:
             flash("User not registered")
-        elif not check_password_hash(rows[0]["password"], request.form.get("password")):
-            flash(f"Invalid password for user {request.form.get("username")}")
+        elif not check_password_hash(rows[0]["password"], password):
+            flash(f"Invalid password for user {username}")
 
         session["user_id"] = rows[0]["id"]
         return redirect("/")
