@@ -978,6 +978,7 @@ section,
 
 .get-started .php-email-form input[type=text],
 .get-started .php-email-form input[type=email],
+.get-started .php-email-form input[type=password],
 .get-started .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
@@ -990,12 +991,15 @@ section,
 
 .get-started .php-email-form input[type=text]:focus,
 .get-started .php-email-form input[type=email]:focus,
+.get-started .php-email-form input[type=password]:focus,
+
 .get-started .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
 .get-started .php-email-form input[type=text]::placeholder,
 .get-started .php-email-form input[type=email]::placeholder,
+.get-started .php-email-form input[type=password]::placeholder,
 .get-started .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
