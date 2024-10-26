@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+<main class="main">
+    <div class="page-title dark-background" style="background-image: url(static/img/loginpage.jpg);">
+        <div class="container position-relative">
+          <h1>Login to my MuscleCraft account</h1>
+        </div>
+      </div>
+
+  <section id="get-started" class="get-started section">
+
+    <div class="container">
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
+            <form action="/register" method="post" class="login-form">
+                <h2 style="text-align: center;">Register</h2>
+                <div class="row gy-3">
+
+                    <div class="col-12">
+                        <input type="text" name="username" class="form-control" placeholder="Username" required="" autocomplete="off">
+                    </div>
+
+                    <div class="col-12">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="" autocomplete="off">
+                    </div>
+
+                    <div class="col-12 ">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="" autocomplete="off">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <div class="loading d-none">Loading</div>
+                        <div class="error-message d-none"></div>
+
+                        <button type="submit">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+      </div>
+  </section>
+</main>
+
+
+
+{% endblock %}
