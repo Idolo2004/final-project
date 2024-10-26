@@ -40,4 +40,11 @@ def login():
             return apology("must provide password", 403)
 
         rows = cursor.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
-        
+
+        if len(rows) != 1 or not check_password_hash(rows[0]["password"], request.form.get("password")):
+            return apology("invalid username and/or password", 403)
+
+        session["user_id"] = rows[0]["id"]
+        return redirect("/")
+    else:
+        return render_template("login.html")
