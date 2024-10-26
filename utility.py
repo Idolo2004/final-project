@@ -7,5 +7,5 @@ with open("webapp.jpeg", 'rb') as input_file:
 
 output_image = remove(input_image)
 
-with open("logo.jpg", "wb") as output_file:
+with open("logo.png", "wb") as output_file:
     output_file.write(output_image)
