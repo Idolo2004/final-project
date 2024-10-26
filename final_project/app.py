@@ -47,6 +47,7 @@ def login():
 
         if len(rows) == 0:
             flash("User not registered")
+            
 
         user = rows[0]
         if not check_password_hash(user["password"], password):
